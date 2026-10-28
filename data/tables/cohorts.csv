@@ -1,0 +1,10 @@
+cohort,runs,products,mean_products,mean_steps,mean_searches,one_domain_runs,hhi,top1_brand,top1_share,median_price_ratio,retrieval,first_query,store_types
+cached,1,0,0.0,0.0,0.0,0,,,,,"{""cached"": 1}",{},{}
+location-default,1,4,4.0,5.0,2.0,0,0.25,Sony,0.25,2.601,"{""catalog"": 1}","{""generic"": 1}","{""retailer"": {""n"": 4, ""share"": 1.0}}"
+pref-tr,6,27,4.5,19.5,8.833,0,0.053,Anker,0.111,2.895,"{""web"": 6}","{""brand"": 6}","{""brand_own"": {""n"": 13, ""share"": 0.481}, ""aggregator"": {""n"": 10, ""share"": 0.37}, ""retailer"": {""n"": 3, ""share"": 0.111}, ""marketplace"": {""n"": 1, ""share"": 0.037}}"
+round3-oct22,12,53,4.417,6.667,4.083,8,0.064,Sony,0.132,2.402,"{""store_site"": 7, ""cached"": 1, ""web_and_store"": 4}","{""generic"": 8, ""brand"": 3}","{""retailer"": {""n"": 34, ""share"": 0.642}, ""marketplace"": {""n"": 10, ""share"": 0.189}, ""brand_own"": {""n"": 8, ""share"": 0.151}, ""unknown"": {""n"": 1, ""share"": 0.019}}"
+round3-oct28,5,24,4.8,8.4,5.6,2,0.125,Tefal,0.25,2.79,"{""catalog"": 2, ""web"": 3}","{""generic"": 4, ""brand"": 1}","{""marketplace"": {""n"": 21, ""share"": 0.875}, ""retailer"": {""n"": 2, ""share"": 0.083}, ""brand_own"": {""n"": 1, ""share"": 0.042}}"
+tr-r1,6,38,6.333,13.667,8.167,2,0.064,Anker,0.132,5.318,"{""web_and_store"": 5, ""store_site"": 1}","{""brand"": 1, ""model"": 1, ""generic"": 4}","{""marketplace"": {""n"": 29, ""share"": 0.763}, ""brand_own"": {""n"": 9, ""share"": 0.237}}"
+tr-r2,6,31,5.167,18.667,12.167,1,0.068,Anker,0.194,3.795,"{""web_and_store"": 4, ""web"": 2}","{""model"": 1, ""brand"": 5}","{""marketplace"": {""n"": 28, ""share"": 0.903}, ""brand_own"": {""n"": 3, ""share"": 0.097}}"
+us-r1,6,23,3.833,2.167,1.333,6,0.074,A New Day,0.136,2.182,"{""store_site"": 6}","{""generic"": 6}","{""retailer"": {""n"": 23, ""share"": 1.0}}"
+us-r2,6,28,4.667,19.5,7.833,0,0.064,Anker,0.143,3.901,"{""editorial_web"": 6}","{""editorial"": 6}","{""brand_own"": {""n"": 18, ""share"": 0.643}, ""marketplace"": {""n"": 9, ""share"": 0.321}, ""retailer"": {""n"": 1, ""share"": 0.036}}"

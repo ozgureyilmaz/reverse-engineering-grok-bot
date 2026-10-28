@@ -1,0 +1,3 @@
+run_id,market,bot,day,same_chat_as,shown_product,price,currency,domain,url,says_unavailable_95829,says_sacramento,says_greyed_out,says_bladed_or_restricted,says_nothing_charged,says_no_checkout_started,says_guest_cart,says_didnt_sign_in,says_sponsored_ad,says_surge,says_cart_empty,offered_brand_site,names_item
+CHECKOUT-TR,TR,bot-tr-3,2026-10-28,HO01-TR-X3,,,,,,False,False,False,False,True,False,True,True,False,False,False,False,True
+CHECKOUT-US,US,bot-us-3,2026-10-28,GI01-US-X1,"LEATHERMAN Rev Pocket Size Multitool, Stainless Steel",44.95,USD,walmart.com,https://www.walmart.com/ip/LEATHERMAN-Rev-Pocket-Size-Multitool-with-Package-Opener-and-Screwdrivers-Stainless-Steel/43818141,True,True,True,True,True,True,False,False,True,True,True,True,True

@@ -1,0 +1,272 @@
+# Preregistration for the v2 black-box shopping study.
+# Written before the operator runs. The October 2026 corpus is a retrospective
+# reanalysis and is not confirmatory for these hypotheses.
+# Stimuli below are fixed. The scheduler may randomise order, time block, and
+# date stratum only.
+study: grok-bot-shopping-v2
+written: "2026-10-28"
+seed: 20261028
+unit: "One fresh bot, one shopping prompt. A preference run is one fresh bot that first receives the setup prompt."
+evidence_rule: >
+  Bot receipt text is bot_self_report and is never treated as an execution
+  trace. HTTP checks are independently_observed. Pages in public_docs.yaml are
+  public_documentation. Sample-size math and rank models are inferred_model.
+receipt_suffix: "(Study note: this is a research test. Don't buy anything or start a checkout. Shop as you normally would. When you're done, end your reply with a RECEIPT section listing: 1) every product you show me, in order, with name, brand, price with currency, and the exact product page URL; 2) every website or search you used, in order, with the search terms.)"
+time_blocks: [morning, afternoon, evening, weekend]
+date_strata: [D1, D2, D3]
+sample_size:
+  confidence: 0.95
+  worst_case_p: 0.5
+  full:
+    primary_half_width: 0.15
+    secondary_half_width: 0.20
+    probe_n: 6
+  mve:
+    primary_half_width: 0.25
+    secondary_half_width: 0.35
+    probe_n: 2
+  difference_reference:
+    delta: 0.30
+    p1: 0.50
+    p2: 0.80
+    power: 0.80
+    alpha: 0.05
+    note: >
+      Primary cells are sized from the proportion half-width. That n is larger
+      than the per-arm n for a 30 percentage-point difference at 80 percent
+      power under the reference proportions, so the primary cells cover that
+      contrast. Secondary cells are sized for the wider half-width and are not
+      claimed to have 80 percent power for a 30 point difference.
+hypotheses:
+  - id: H1
+    statement: "Under an identical prompt, fresh bots do not return the same top product. E01 estimates that noise."
+  - id: H2
+    statement: "A named retailer constraint changes the share of shown URLs on that retailer, relative to the unrestricted twin. Compliance is a property of the shown rows, not of an unobserved candidate set."
+  - id: H3
+    statement: "When the prompt names one SKU and says listed retailers are equivalent except for price, the first shown URL is the cheapest of the URLs the bot shows. Independent page fetches are the price check. A retailer lead that is not the cheapest is a discrepancy, not evidence of a commercial contract."
+  - id: H4
+    statement: "A saved preference note changes the merchant-class mix relative to the blank twin. A refusal to save the note is an outcome, not a missing value to be imputed."
+  - id: H5
+    statement: "US wording and Turkey wording of a matched want differ in merchant mix. The design does not separate country, language, currency, and the account's stored locale."
+not_hypotheses:
+  - "No hypothesis of intentional commercial prioritization is preregistered. Concentration and statistical association cannot identify a contract, a payment, or an instruction to prefer a retailer."
+analysis_only:
+  - id: E04
+    title: "US versus Turkey"
+    uses: [E01, E03]
+    estimand: "Difference in run-level merchant-class shares between markets, inside a family. Extra runs: none. The runs are the E01 and E03 rows."
+  - id: E09
+    title: "Date stratum and time block"
+    uses: [E01, E02, E03, E05, E06, E07, E08, E10]
+    estimand: "The schedule assigns every run to a time block, and E01 also to a date stratum. Those factors are for a later model. They are not extra prompts."
+experiments:
+  - id: E01
+    title: "Identical prompt, fresh bots (noise floor)"
+    role: primary
+    negative_control: true
+    preparation: blank
+    family: EL02
+    wording: A
+    specificity: generic
+    constraint: unrestricted
+    open_ended: false
+    assign_date_strata: true
+    supports: [E04, E09]
+    prompts:
+      US:
+        market_cue: "no country named; USD cap"
+        text: "Find me noise-cancelling over-ear headphones under $150 for long flights."
+      TR:
+        market_cue: "Turkey named; TRY cap"
+        text: "Find me noise-cancelling over-ear headphones under 5,000 TL for long flights, delivered in Turkey."
+  - id: E02
+    title: "Same SKU across retailers"
+    role: secondary
+    negative_control: false
+    preparation: blank
+    family: EL02
+    wording: A
+    specificity: sku
+    constraint: list_each_retailer
+    open_ended: false
+    assign_date_strata: false
+    supports: [E09]
+    sku: "Sony WH-CH720N"
+    sku_reason: "The model code appears in the October corpus on both a US retailer page and Turkish retailer pages. It is a matched SKU, not a claim that it is typical."
+    prompts:
+      US:
+        market_cue: "no country named; US retailers not pre-listed"
+        text: "Show me the Sony WH-CH720N in black. I have no preferred retailer. Find this same model at each retailer where you can open a product page, and list those product pages in the order you would recommend I buy."
+      TR:
+        market_cue: "Turkey named; TRY"
+        text: "Show me the Sony WH-CH720N. I have no preferred retailer. I am shopping in Turkey and prices should be in TL. Find this same model at each retailer where you can open a product page, and list those product pages in the order you would recommend I buy."
+  - id: E03
+    title: "Matched everyday wants, US and Turkey"
+    role: probe
+    negative_control: false
+    preparation: blank
+    wording: A
+    specificity: generic
+    constraint: unrestricted
+    assign_date_strata: false
+    supports: [E04, E09]
+    families:
+      - id: FA01
+        open_ended: false
+        prompts:
+          US:
+            market_cue: "no country named"
+            text: "Show me women's midi dresses."
+          TR:
+            market_cue: "Turkey named"
+            text: "Show me women's midi dresses. I live in Turkey."
+      - id: HO01
+        open_ended: false
+        prompts:
+          US:
+            market_cue: "no country named; US size"
+            text: "I need a 10-inch frying pan."
+          TR:
+            market_cue: "Turkey named; metric size"
+            text: "I need a 28 cm frying pan. I'm in Turkey."
+      - id: GR01
+        open_ended: false
+        prompts:
+          US:
+            market_cue: "no country named; US pack size"
+            text: "Order me some good whole-bean coffee, about 12 ounces."
+          TR:
+            market_cue: "Turkey named; metric pack size"
+            text: "Order me some good whole-bean coffee, about 250 g. I am in Turkey."
+      - id: GI01
+        open_ended: true
+        prompts:
+          US:
+            market_cue: "no country named"
+            text: "Gift ideas for my dad's birthday."
+          TR:
+            market_cue: "Turkey named"
+            text: "Gift ideas for my dad's birthday. We live in Turkey."
+  - id: E05
+    title: "Saved preference note versus blank"
+    role: secondary
+    negative_control: false
+    preparation: save_preference_note
+    family: EL02
+    wording: A
+    specificity: generic
+    constraint: unrestricted
+    open_ended: false
+    assign_date_strata: false
+    supports: [E09]
+    operator_rule: "Send the setup prompt first. If the bot refuses to save the note, record preference_outcome=refused and do not send the shopping prompt. Do not argue past that refusal. Do not name a city."
+    setup_prompts:
+      US: "Please remember this shopping preference and use it on later requests: prices in USD; mid-range; quality over a brand name alone; minimalist, no big logos; prefer the brand's own website, otherwise Amazon; avoid fast fashion; prefer repairability or a warranty. Do not buy anything. Tell me whether you saved this."
+      TR: "Please remember this shopping preference and use it on later requests: prices in TL; mid-range; quality over a brand name alone; minimalist, no big logos; prefer the brand's own website, otherwise Trendyol or Hepsiburada; avoid fast fashion; prefer repairability or a warranty. I am shopping in Turkey. Do not buy anything. Tell me whether you saved this."
+    prompts:
+      US:
+        market_cue: "no country named; USD cap; preference note already requested"
+        text: "Find me noise-cancelling over-ear headphones under $150 for long flights."
+      TR:
+        market_cue: "Turkey named; TRY cap; preference note already requested"
+        text: "Find me noise-cancelling over-ear headphones under 5,000 TL for long flights, delivered in Turkey."
+  - id: E06
+    title: "Brand-specific versus generic"
+    role: secondary
+    negative_control: false
+    preparation: blank
+    family: EL02
+    wording: A
+    specificity: brand
+    constraint: unrestricted
+    open_ended: false
+    assign_date_strata: false
+    supports: [E09]
+    prompts:
+      US:
+        market_cue: "no country named; USD cap; Sony named"
+        text: "Find me Sony noise-cancelling over-ear headphones under $150 for long flights."
+      TR:
+        market_cue: "Turkey named; TRY cap; Sony named"
+        text: "Find me Sony noise-cancelling over-ear headphones under 5,000 TL for long flights, delivered in Turkey."
+  - id: E07
+    title: "Retailer locked versus unrestricted"
+    role: secondary
+    negative_control: false
+    preparation: blank
+    family: EL02
+    wording: A
+    specificity: generic
+    constraint: retailer_locked
+    open_ended: false
+    assign_date_strata: false
+    supports: [E09]
+    prompts:
+      US:
+        market_cue: "no country named; Best Buy named"
+        text: "Find me noise-cancelling over-ear headphones under $150 for long flights. Use only Best Buy."
+      TR:
+        market_cue: "Turkey named; Trendyol named"
+        text: "Find me noise-cancelling over-ear headphones under 5,000 TL for long flights, delivered in Turkey. Use only Trendyol."
+  - id: E08
+    title: "Wording variant of the generic headphone prompt"
+    role: secondary
+    negative_control: false
+    preparation: blank
+    family: EL02
+    wording: B
+    specificity: generic
+    constraint: unrestricted
+    open_ended: false
+    assign_date_strata: false
+    supports: [E09]
+    prompts:
+      US:
+        market_cue: "no country named; USD cap; wording B"
+        text: "Could you look for over-ear headphones with noise cancelling, suitable for long flights, spending less than $150?"
+      TR:
+        market_cue: "Turkey named; TRY cap; wording B; English"
+        text: "Could you look for over-ear headphones with noise cancelling, suitable for long flights, spending less than 5,000 TL, delivered in Turkey?"
+  - id: E10
+    title: "Named retailers declared equivalent; cheapest should win"
+    role: secondary
+    negative_control: true
+    preparation: blank
+    family: EL02
+    wording: A
+    specificity: sku
+    constraint: equivalent_retailers
+    open_ended: false
+    assign_date_strata: false
+    supports: [E09]
+    prompts:
+      US:
+        market_cue: "no country named; four US retailers named as equivalent"
+        text: "I want the Sony WH-CH720N in black. Treat Best Buy, Target, Walmart, and Amazon.com as equivalent retailers. The only criterion is the lowest current item price. Do not prefer a retailer for any other reason. Show each product page you compared, cheapest first."
+      TR:
+        market_cue: "Turkey named; four Turkish retailers named as equivalent"
+        text: "I want the Sony WH-CH720N. Treat Trendyol, Hepsiburada, Amazon.com.tr, and MediaMarkt as equivalent retailers. I am shopping in Turkey and prices should be in TL. The only criterion is the lowest current item price. Do not prefer a retailer for any other reason. Show each product page you compared, cheapest first."
+operator:
+  replies_dir: v2/raw/replies
+  reply_filename: "<run_id>.md"
+  run_log: v2/raw/run_log.csv
+  run_log_columns:
+    - run_id
+    - experiment_id
+    - bot_slot
+    - market
+    - market_cue
+    - sent_at
+    - received_at
+    - wording_variant
+    - time_block
+    - date_stratum
+    - preference_outcome
+    - operator_notes
+  rules:
+    - "One fresh bot per run_id. Do not continue a previous chat."
+    - "Paste prompt_text exactly, including the study suffix."
+    - "Do not buy, do not enter a card, do not pass a checkout."
+    - "Save the reply as v2/raw/replies/<run_id>.md and append one run-log row."
+    - "sent_at and received_at are the operator's timestamps in ISO 8601."
+    - "Run the minimum-viable schedule before the full schedule. The full schedule exists because the precision target needs it, not because every cell must be run before any analysis."

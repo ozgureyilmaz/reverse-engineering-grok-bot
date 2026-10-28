@@ -1,0 +1,11 @@
+{
+  "evidence_class": "inferred_model",
+  "status": "UNEXECUTED",
+  "source": "none",
+  "detail": "No compliant search API credential is available in this environment, and v2/raw/baseline/ has no operator-supplied result lists. Public result pages were not scraped.",
+  "api_env_names_present": [],
+  "operator_files": 0,
+  "overlaps": [],
+  "file_name_rule": "sha256 of the query UTF-8, plus .json",
+  "example_name_for_empty": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.json"
+}

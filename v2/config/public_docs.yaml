@@ -1,0 +1,61 @@
+# Public pages retrieved 28 October 2026 from this study's VM.
+# Quotes are short and are the words on the page. None of these pages is an
+# execution trace of the shopping replies in evidence/.
+retrieved: "2026-10-28"
+pages:
+  - id: DOC-OVERVIEW
+    url: https://docs.x.ai/grok-bot/overview
+    supports:
+      - "Grok Bot is described as working on a persistent cloud computer with a browser, filesystem, and terminal."
+      - "The bot takes on multi-step work across apps and websites and comes back when something needs approval."
+      - "Memory is described as stable preferences, role context, and summaries of prior work. Name and time zone are described as shared across the account's bots. Other learned context is described as separate per bot."
+      - "A site can block automation. The page says the bot hands those steps back rather than working around them."
+    does_not_support:
+      - "No product-catalog search, no ranking formula, and no retailer contract is described on this page."
+  - id: DOC-COMPUTER
+    url: https://docs.x.ai/grok-bot/computer-and-apps
+    supports:
+      - "At checkout, the page says the bot can use a card saved in Vault, a card entered in a Secure Form, or a connected wallet such as Link or X Money."
+      - "Browser sessions are described as persistent and shared across the account's bots."
+    does_not_support:
+      - "The page does not name a product catalog. The words 'product catalog' and 'catalog search' were not on the page when it was retrieved."
+  - id: DOC-BOTS
+    url: https://docs.x.ai/grok-bot/bots
+    supports:
+      - "A bot is described as keeping preferences, rules, name, time zone, and a dated work log."
+      - "Logins, cards, and contact details such as addresses and phone numbers are described as belonging in Vault, not in memory."
+      - "The page says a bot decides on its own when something is worth keeping, and that memory is not a source of truth."
+    does_not_support:
+      - "No shopping ranker is described."
+  - id: DOC-MOBILE
+    url: https://docs.x.ai/grok-bot/mobile
+    supports:
+      - "Phone location, when the bot is asked and the person is in their own chat, is described as a position, not an address or a place name."
+    does_not_support:
+      - "This does not say what locale a desktop bot uses when a shopping prompt names no country."
+  - id: DOC-CHANGELOG
+    url: https://x.ai/changelog/bot
+    supports:
+      - "22 October 2026 entry: bots can pay with Shop Pay, through Shop checkout where a store accepts it, and with a one-time Shop card elsewhere."
+      - "26 October 2026 entry: the Vault has a Payments tab for the method bots try first, and the person still approves every purchase."
+      - "25 September 2026 entry: bots use built-in guides with direct links and steps for popular travel, food, shopping, and shipping sites."
+    does_not_support:
+      - "The changelog retrieved on 28 October 2026 does not mention a product-catalog search."
+      - "A built-in guide for shopping sites is not evidence of a commercial ranking deal."
+  - id: DOC-GUIDE-101
+    url: https://x.ai/bot/guides/grok-bot-101
+    supports:
+      - "A 11 September 2026 guide by Matt Palmer describes Grok Bot as an agent with a cloud computer that can browse and use apps."
+      - "The guide says the author asked a bot to look at Costco and Amazon, add items to a cart, and compare prices, delivery charges, and times."
+      - "The guide says the bot can hand the desktop back for a CAPTCHA or a 2FA login."
+    does_not_support:
+      - "The guide is an example, not a specification of ranking or of which retailers are preferred."
+  - id: DOC-API-SEARCH
+    url: https://docs.x.ai/developers/tools/web-search
+    supports:
+      - "The xAI API documents a developer tool whose name on that page is web_search. The page is about the API, updated in the page's own 'last updated' line, and it is a different surface from the Grok Bot chats in this study."
+    does_not_support:
+      - "This study does not treat that API name as the name of a tool the shopping bot called. No execution trace was collected."
+searched_for_catalog:
+  query: "product catalog and catalog search, on the pages listed above"
+  result: "Those phrases were not present on the pages retrieved on 28 October 2026. That is not a proof that no such page exists anywhere."

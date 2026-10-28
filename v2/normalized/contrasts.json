@@ -1,0 +1,30 @@
+[
+  {
+    "experiment_id": "E04",
+    "title": "US versus Turkey",
+    "uses": [
+      "E01",
+      "E03"
+    ],
+    "estimand": "Difference in run-level merchant-class shares between markets, inside a family. Extra runs: none. The runs are the E01 and E03 rows.",
+    "extra_runs": 0,
+    "status": "UNEXECUTED"
+  },
+  {
+    "experiment_id": "E09",
+    "title": "Date stratum and time block",
+    "uses": [
+      "E01",
+      "E02",
+      "E03",
+      "E05",
+      "E06",
+      "E07",
+      "E08",
+      "E10"
+    ],
+    "estimand": "The schedule assigns every run to a time block, and E01 also to a date stratum. Those factors are for a later model. They are not extra prompts.",
+    "extra_runs": 0,
+    "status": "UNEXECUTED"
+  }
+]

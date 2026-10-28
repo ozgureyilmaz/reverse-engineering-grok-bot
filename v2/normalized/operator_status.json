@@ -1,0 +1,8 @@
+{
+  "status": "UNEXECUTED",
+  "n_replies": 0,
+  "n_with_receipt": 0,
+  "warnings": [],
+  "evidence_class": "bot_self_report",
+  "note": "No operator reply is analysed as a v2 result until it is in this directory."
+}

@@ -1,0 +1,56 @@
+{
+  "difference_per_arm_reference": 36,
+  "evidence_class": "inferred_model",
+  "expected_half_width_at_p_0_5": {
+    "full": {
+      "primary": 0.14944585277287675,
+      "probe": null,
+      "secondary": 0.1959963984540054
+    },
+    "mve": {
+      "primary": 0.24499549806750676,
+      "probe": null,
+      "secondary": 0.3464759560874195
+    }
+  },
+  "note": "These runs have not been sent. The CSVs are the operator schedule.",
+  "rows_by_experiment": {
+    "full": {
+      "E01": 86,
+      "E02": 50,
+      "E03": 48,
+      "E05": 50,
+      "E06": 50,
+      "E07": 50,
+      "E08": 50,
+      "E10": 50
+    },
+    "mve": {
+      "E01": 32,
+      "E02": 16,
+      "E03": 16,
+      "E05": 16,
+      "E06": 16,
+      "E07": 16,
+      "E08": 16,
+      "E10": 16
+    }
+  },
+  "schedule_rows": {
+    "full": 434,
+    "mve": 144
+  },
+  "sizes_per_market_cell": {
+    "full": {
+      "primary": 43,
+      "probe": 6,
+      "secondary": 25
+    },
+    "mve": {
+      "primary": 16,
+      "probe": 2,
+      "secondary": 8
+    }
+  },
+  "status": "UNEXECUTED"
+}

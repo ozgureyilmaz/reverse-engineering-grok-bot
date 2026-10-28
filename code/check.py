@@ -34,7 +34,13 @@ def sha256_file(path: Path) -> str:
     return h.hexdigest()
 
 
-def tracked_files() -> list[Path]:
+def tracked_files(*, include_v2: bool = False) -> list[Path]:
+    """Files attested by the v1 manifest.
+
+    The v2 study lives under v2/ and keeps its own raw files and manifest.
+    It is not part of the v1 hash list, so adding v2 does not rewrite the
+    published v1 checksums. Redaction scanning can still see v2 source.
+    """
     files = []
     for path in sorted(ROOT.rglob("*")):
         if not path.is_file():
@@ -44,6 +50,13 @@ def tracked_files() -> list[Path]:
             continue
         if any(part in {".git", "__pycache__", ".pytest_cache", ".venv"} for part in rel.parts):
             continue
+        if "v2" in rel.parts:
+            if not include_v2:
+                continue
+            # Fetched pages and operator replies are third-party or future
+            # input. v2/src/grokstudy/check_v2.py scans authored v2 files.
+            if "raw" in rel.parts:
+                continue
         files.append(path)
     return files
 
@@ -121,7 +134,7 @@ def check_redaction() -> list[str]:
     problems = []
     if (ROOT / "CONTEXT_HANDOFF.md").exists():
         problems.append("CONTEXT_HANDOFF.md must not be published")
-    for path in tracked_files():
+    for path in tracked_files(include_v2=True):
         rel = path.relative_to(ROOT).as_posix()
         # The scanner itself has to name what it scans for.
         if rel == "code/check.py":

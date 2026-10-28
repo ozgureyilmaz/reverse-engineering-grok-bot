@@ -1,0 +1,14 @@
+run_id,prompt_id,perturbation,budget,currency,shown,priced,over,under,range_crosses,unpriced,prose_says_none,over_names
+np-us__EL02-US__r1,EL02-US,,150,USD,4,4,0,4,0,0,False,[]
+np-tr__EL02-TR__r1,EL02-TR,,5000,TRY,5,5,0,5,0,0,False,[]
+np-tr__EL02-TR__r2,EL02-TR,,5000,TRY,4,4,0,4,0,0,False,[]
+np-us__EL02-US__r2,EL02-US,,150,USD,4,4,0,4,0,0,False,[]
+pref-tr__EL02-TR__r1,EL02-TR,,5000,TRY,3,3,0,3,0,0,False,[]
+EL02-TR-X1__r1,EL02-TR,store,5000,TRY,5,5,0,5,0,0,False,[]
+EL02-TR-X2__r1,EL02-TR,brand,5000,TRY,2,2,2,0,0,0,True,"[""Sony WH-CH720N"", ""Sony WH-CH720N""]"
+EL02-US-X3__r1,EL02-US,brand,150,USD,2,2,1,1,0,0,False,"[""Sony ULT WEAR, Black (mentioned as an over-budget alternative)""]"
+EL02-US-X5__r1,EL02-US,store,150,USD,4,4,0,4,0,0,False,[]
+FA01-TR-X2__r1,FA01-TR,budget,2000,TRY,6,6,0,6,0,0,False,[]
+FA01-US-X4__r1,FA01-US,budget,60,USD,8,8,0,8,0,0,False,[]
+GI01-US-X1__r1,GI01-US,budget,50,USD,4,4,0,4,0,0,False,[]
+HO01-US-X3__r1,HO01-US,budget,30,USD,5,5,0,5,0,0,False,[]
